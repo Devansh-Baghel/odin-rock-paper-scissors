@@ -22,11 +22,11 @@ let getUserOption = () => {
 Enter Your Choice: `)
     if (isNaN(userOption)){
         alert("Enter a Valid Option (1-3)");
-        getUserOption();
+        // getUserOption();
     }
     else if (userOption > 3 || userOption < 1){
         alert("Enter a Valid Option (1-3)");
-        getUserOption();
+        // getUserOption();
     }
     else{
         return gameOptions[userOption-1];
