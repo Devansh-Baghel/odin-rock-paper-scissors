@@ -33,15 +33,46 @@ Enter Your Choice: `)
     }
 }
 
-// Get input from user
-// getRandomGameOption();
 const userOption = getUserOption();
 const randomGameOption = getRandomGameOption();
 console.log(`You Have chosen ${userOption}`);
 console.log(`Computer has chosen ${randomGameOption}`);
-if (userOption === randomGameOption){
-    console.log("You WIN!!");
+// if (userOption === randomGameOption){
+//     console.log("You WIN!!");
+// }
+// else{
+//     console.log("You LOSE :(");
+// }
+let winner;
+
+//  rock > scissors
+//  paper > rock
+//  scissors > paper
+
+if (userOption == randomGameOption){
+    winner = "tie";
+} 
+else if (userOption == "Rock" && randomGameOption == "Paper"){
+    winner = "Computer";
+}
+else if (userOption == "Paper" && randomGameOption == "Rock"){
+    winner = "User";
+}
+else if (userOption == "Rock" && randomGameOption == "Scissors"){
+    winner = "User";
+}
+else if (userOption == "Scissors" && randomGameOption == "Rock"){
+    winner = "Computer";
+}
+else if (userOption == "Scissors" && randomGameOption == "Paper"){
+    winner = "User";
+}
+else if (userOption == "Paper" && randomGameOption == "Scissors"){
+    winner = "Computer";
+}
+if (winner === "tie"){
+    console.log("It's a Tie, play again!");
 }
 else{
-    console.log("You LOSE :(");
+    console.log(winner + " WON!");
 }
