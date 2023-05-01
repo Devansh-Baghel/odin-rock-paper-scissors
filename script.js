@@ -18,10 +18,10 @@ function playGame(){
     }
     }
     let getUserOption = () => {
-        const userOption = prompt(`1. Rock
-    2. Paper
-    3. Scissors
-    Enter Your Choice: `)
+        const userOption = prompt(`        1. Rock
+        2. Paper
+        3. Scissors
+        Enter Your Choice (1-3): `)
         if (isNaN(userOption)){
             alert("Enter a Valid Option (1-3)");
             // getUserOption();
