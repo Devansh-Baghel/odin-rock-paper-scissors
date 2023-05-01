@@ -37,39 +37,34 @@ const userOption = getUserOption();
 const randomGameOption = getRandomGameOption();
 console.log(`You Have chosen ${userOption}`);
 console.log(`Computer has chosen ${randomGameOption}`);
-// if (userOption === randomGameOption){
-//     console.log("You WIN!!");
-// }
-// else{
-//     console.log("You LOSE :(");
-// }
+
 let winner;
 
-//  rock > scissors
-//  paper > rock
-//  scissors > paper
+let checkWinner = (userOption, randomGameOption) =>{
+    if (userOption == randomGameOption){
+        return "tie";
+    } 
+    else if (userOption == "Rock" && randomGameOption == "Paper"){
+        return "Computer";
+    }
+    else if (userOption == "Paper" && randomGameOption == "Rock"){
+        return "User";
+    }
+    else if (userOption == "Rock" && randomGameOption == "Scissors"){
+        return "User";
+    }
+    else if (userOption == "Scissors" && randomGameOption == "Rock"){
+        return "Computer";
+    }
+    else if (userOption == "Scissors" && randomGameOption == "Paper"){
+        return "User";
+    }
+    else if (userOption == "Paper" && randomGameOption == "Scissors"){
+        return "Computer";
+    }
+}
+winner = checkWinner(userOption,randomGameOption);
 
-if (userOption == randomGameOption){
-    winner = "tie";
-} 
-else if (userOption == "Rock" && randomGameOption == "Paper"){
-    winner = "Computer";
-}
-else if (userOption == "Paper" && randomGameOption == "Rock"){
-    winner = "User";
-}
-else if (userOption == "Rock" && randomGameOption == "Scissors"){
-    winner = "User";
-}
-else if (userOption == "Scissors" && randomGameOption == "Rock"){
-    winner = "Computer";
-}
-else if (userOption == "Scissors" && randomGameOption == "Paper"){
-    winner = "User";
-}
-else if (userOption == "Paper" && randomGameOption == "Scissors"){
-    winner = "Computer";
-}
 if (winner === "tie"){
     console.log("It's a Tie, play again!");
 }
