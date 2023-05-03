@@ -78,19 +78,6 @@ function playGame(){
     }
     console.log(`The current score is YOU: ${userPoints} COMPUTER: ${computerPoints}`);
 }
-playGame()
-console.log("");
-console.log("GAME 2");
-playGame()
-console.log("");
-console.log("GAME 3");
-playGame()
-console.log("");
-console.log("GAME 4");
-playGame()
-console.log("");
-console.log("GAME 5");
-playGame()
 
 if (userPoints > computerPoints){
     console.log("");

@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&family=Varela+Round&display=swap');
+
+body{
+	display: flex;  
+	flex-direction: column;
+	background-color: #023047;
+	font-family: 'Varela Round', sans-serif;
+	text-align: center;
+	color: #FFB703;
+}
+h1{
+	font-size: 60px;
+}
+h2{
+	font-size: 40px;
+}
+.rock img{
+	margin-top: 70px;
+}
+.button:hover{
+	cursor: pointer;
+	opacity: 60%;
+}
+
+.game-options-container{
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+}
+
+@media only screen and (max-width: 600px) {
+	h1{
+		font-size: 15vw;
+	}
+  img {
+    width: 30vw;
+		height: auto;
+  }
+	.rock img{
+		margin-top: 10vw;
+	}
+}
