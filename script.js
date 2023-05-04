@@ -1,92 +1,58 @@
-const gameOptions = ["Rock", "Paper", "Scissors"];
-let winner;
+const displayInfo = document.querySelector(".display-info");
+const userPointsDisplay = document.querySelector(".user-points");
+const computerPointsDisplay = document.querySelector(".computer-points");
+const gameOptions = document.querySelectorAll(".button");
 let userPoints = 0;
 let computerPoints = 0;
-function playGame(){
-    let getRandomGameOption = () => {
-    randomChoice = Math.floor(Math.random() * 3);
-    switch(randomChoice){
+let winner;
+
+
+let getComputerChoice = () => {
+    let randomOption = Math.floor(Math.random() * 3);
+    switch (randomOption){
         case 0:
-            return gameOptions[0];
-            break;
+            return "rock";
         case 1:
-            return gameOptions[1];
-            break;
+            return "paper";
         case 2:
-            return gameOptions[2];
-            break;
+            return "scissors";
     }
+};
+
+function playGame(userChoice, computerChoice) {
+    console.log(`You have Chosen ${userChoice}`);
+    console.log(`Computer has Chosen ${computerChoice}`);
+    if(userChoice == computerChoice){
+        winner = "tie";
     }
-    let getUserOption = () => {
-        const userOption = prompt(`        1. Rock
-        2. Paper
-        3. Scissors
-        Enter Your Choice (1-3): `)
-        if (isNaN(userOption)){
-            alert("Enter a Valid Option (1-3)");
-            // getUserOption();
-        }
-        else if (userOption > 3 || userOption < 1){
-            alert("Enter a Valid Option (1-3)");
-            // getUserOption();
-        }
-        else{
-            return gameOptions[userOption-1];
-        }
+    else if(userChoice == "rock" && computerChoice == "scissors"
+    || userChoice == "paper" && computerChoice == "rock"
+    || userChoice == "scissors" && computerChoice == "paper"){
+        winner = "You";
+        userPoints += 1;
     }
-    
-    const userOption = getUserOption();
-    const randomGameOption = getRandomGameOption();
-    console.log(`You Have chosen ${userOption}`);
-    console.log(`Computer has chosen ${randomGameOption}`);
-    
-    
-    let checkWinner = (userOption, randomGameOption) =>{
-        if (userOption == randomGameOption){
-            return "tie";
-        } 
-        else if (userOption == "Rock" && randomGameOption == "Paper"){
-            return "Computer";
-        }
-        else if (userOption == "Paper" && randomGameOption == "Rock"){
-            return "User";
-        }
-        else if (userOption == "Rock" && randomGameOption == "Scissors"){
-            return "User";
-        }
-        else if (userOption == "Scissors" && randomGameOption == "Rock"){
-            return "Computer";
-        }
-        else if (userOption == "Scissors" && randomGameOption == "Paper"){
-            return "User";
-        }
-        else if (userOption == "Paper" && randomGameOption == "Scissors"){
-            return "Computer";
-        }
+    else{
+        winner = "Computer";
+        computerPoints += 1;
     }
-    winner = checkWinner(userOption,randomGameOption);
-    
-    if (winner === "tie"){
-        console.log("It's a Tie, play again!");
+
+    if(winner != "tie"){
+        displayInfo.innerText = `${winner} won!`
+        console.log(winner + " won!");
     }
-    else if (winner == "User"){
-        userPoints++
-        console.log("YOU WIN");
+    else {
+        displayInfo.innerText = "It's a Tie"
+        console.log("It's a Tie");
     }
-    else if (winner == "Computer"){
-        computerPoints++
-    }
-    console.log(`The current score is YOU: ${userPoints} COMPUTER: ${computerPoints}`);
+    computerPointsDisplay.innerText = computerPoints;
+    userPointsDisplay.innerText = userPoints;
+
 }
 
-if (userPoints > computerPoints){
-    console.log("");
-    console.log("You won the game!!!");
-    console.log("");
-}else if (computerPoints > userPoints){
-    console.log("");
-    console.log("Computer won the game :(");
-    console.log("");
-}else{
-    console.log("It's a tie!");
-}
+gameOptions.forEach((gameOption) => {
+    gameOption.addEventListener("click", () => {
+        const computerChoice = getComputerChoice();
+        const userChoice = gameOption.id;
+        playGame(userChoice, computerChoice);
+    });
+})
