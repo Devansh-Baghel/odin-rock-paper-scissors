@@ -1,6 +1,8 @@
 const displayInfo = document.querySelector(".display-info");
 const userPointsDisplay = document.querySelector(".user-points");
+const finalUserPointsDisplay = document.querySelector(".final-user-points");
 const computerPointsDisplay = document.querySelector(".computer-points");
+const finalComputerPointsDisplay = document.querySelector(".final-computer-points");
 const gameOptions = document.querySelectorAll(".button");
 const modal = document.querySelector("dialog");
 const playAgainButton = document.querySelector(".play-again");
@@ -55,6 +57,8 @@ function playGame(userChoice, computerChoice) {
     userPointsDisplay.innerText = userPoints;
 
     if (computerPoints >= 5 || userPoints >= 5){
+        finalComputerPointsDisplay.innerText = computerPoints;
+        finalUserPointsDisplay.innerText = userPoints;
         modal.showModal();
     }
 

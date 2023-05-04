@@ -28,7 +28,36 @@ h2{
 	align-items: center;
 }
 
+dialog{
+	width: 40em;
+	height: 18em;
+	background-color: #FFB703;
+	border-radius: 30px;
+	color: #023047;
+}
+dialog::backdrop{
+	background-color: rgba(0,0,0,0.5);
+}
+
+.play-again{
+	width: 50%;
+	height: 25%;
+	border: none;
+	border-radius: 10px;
+	background-color: #023047;
+	color: #FFB703;
+	font-size: 24px;
+	cursor: pointer;
+}
+
+.play-again:hover{
+	background-color: #001b29;
+}
+
 @media only screen and (max-width: 600px) {
+	dialog{
+		width: 80%;
+	}
 	h1{
 		font-size: 15vw;
 	}
