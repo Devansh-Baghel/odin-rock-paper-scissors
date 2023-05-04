@@ -2,10 +2,16 @@ const displayInfo = document.querySelector(".display-info");
 const userPointsDisplay = document.querySelector(".user-points");
 const computerPointsDisplay = document.querySelector(".computer-points");
 const gameOptions = document.querySelectorAll(".button");
+const modal = document.querySelector("dialog");
+const playAgainButton = document.querySelector(".play-again");
+const winnerInfo = document.querySelector(".winner-info");
 let userPoints = 0;
 let computerPoints = 0;
 let winner;
 
+playAgainButton.addEventListener("click", () => {
+    window.location.reload();
+})
 
 let getComputerChoice = () => {
     let randomOption = Math.floor(Math.random() * 3);
@@ -38,6 +44,7 @@ function playGame(userChoice, computerChoice) {
 
     if(winner != "tie"){
         displayInfo.innerText = `${winner} won!`
+        winnerInfo.innerText = `${winner} won!`
         console.log(winner + " won!");
     }
     else {
@@ -46,6 +53,10 @@ function playGame(userChoice, computerChoice) {
     }
     computerPointsDisplay.innerText = computerPoints;
     userPointsDisplay.innerText = userPoints;
+
+    if (computerPoints >= 5 || userPoints >= 5){
+        modal.showModal();
+    }
 
 }
 
